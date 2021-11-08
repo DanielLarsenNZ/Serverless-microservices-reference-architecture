@@ -11,6 +11,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./nodejs/serverless-microservices-functionapp-triparchiver
+
     strategy:
       matrix:
         # https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions?tabs=csharp%2Cv4#languages
@@ -23,7 +27,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: nodejs/serverless-microservices-functionapp-triparchiver
-    - run: cd nodejs/serverless-microservices-functionapp-triparchiver
+        cache-dependency-path: ./nodejs/serverless-microservices-functionapp-triparchiver
     - run: npm install
     - run: npm run pack
