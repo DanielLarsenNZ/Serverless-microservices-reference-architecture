@@ -1,4 +1,4 @@
-name: .NET
+name: dotnet build restore test
 
 on:
   push:

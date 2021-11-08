@@ -1,4 +1,4 @@
-name: nodejs pack
+name: spa build
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./nodejs/serverless-microservices-functionapp-triparchiver
+        working-directory: ./web/serverless-microservices-web
 
     strategy:
       matrix:
@@ -27,6 +27,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: ./nodejs/serverless-microservices-functionapp-triparchiver
+        cache-dependency-path: ./web/serverless-microservices-web
     - run: npm install
-    - run: npm run pack
+    - run: npm run build
